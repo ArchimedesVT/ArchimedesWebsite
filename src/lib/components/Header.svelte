@@ -1,16 +1,35 @@
 <script>
   import { page } from '$app/stores';
-  import { onDestroy } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
 
   let mobileMenuOpen = false;
 
+  function setBodyOverflow(val) {
+    if (!browser) return;            // guard for SSR
+    document.body.style.overflow = val;
+  }
+
   const toggleMobileMenu = () => {
     mobileMenuOpen = !mobileMenuOpen;
-    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
   };
 
+  // Keep body overflow in sync with menu state (client only)
+  $: if (browser) {
+    setBodyOverflow(mobileMenuOpen ? 'hidden' : '');
+  }
+
+  // Close menu (and restore overflow) whenever route changes
+  $: if ($page.url) {
+    mobileMenuOpen = false;
+  }
+
+  onMount(() => {
+    // nothing extra needed; reactive statement above handles it
+  });
+
   onDestroy(() => {
-    document.body.style.overflow = '';
+    setBodyOverflow('');
   });
 </script>
 
@@ -35,8 +54,12 @@
       <span class:open={mobileMenuOpen}></span>
     </button>
 
-    <!-- overlay for solid background -->
-    <div class="menu-overlay" class:open={mobileMenuOpen} on:click={toggleMobileMenu} />
+    <!-- Overlay (must NOT be self-closing in Svelte) -->
+    <div
+      class="menu-overlay"
+      class:open={mobileMenuOpen}
+      on:click={toggleMobileMenu}
+    ></div>
 
     <!-- Desktop / Mobile menu -->
     <ul class="menu" class:open={mobileMenuOpen}>
