@@ -27,15 +27,14 @@
       <div class="footer__col">
         <h4>Follow Us</h4>
         <div class="social">
-          <a href="#" aria-label="Instagram">Instagram</a>
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Discord">Discord</a>
+          <a href="https://www.instagram.com/archimedes.vt/?hl=en" aria-label="Instagram">Instagram</a>
+          <a href="linkedin.com/company/archimedesvt/" aria-label="LinkedIn">LinkedIn</a>
         </div>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>&copy; 2025 Archimedes at Virginia Tech. All rights reserved.</p>
+      <p>2025 Archimedes at Virginia Tech</p>
     </div>
   </div>
 </footer>
