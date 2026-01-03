@@ -25,7 +25,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: linear-gradient(135deg, var(--grad-left), var(--grad-right));
+		background: transparent;
 		color: white;
 		text-align: center;
 		overflow: hidden;
