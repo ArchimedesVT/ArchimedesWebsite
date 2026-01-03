@@ -1,6 +1,6 @@
 # Background
 
-Website built for the Archimedes Society at Virginia Tech, built completely on my own, and then forked to the org to ensure future devs can edit and find it. 
+Website built for the Archimedes Society at Virginia Tech, built completely on my own, and then forked to the org to ensure future devs can edit and find it.
 
 # Svelte library
 
