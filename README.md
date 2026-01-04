@@ -2,18 +2,6 @@
 
 Originally built by @owenstuckman
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
 ## Developing
 
 `npm install` (or `pnpm install` or `yarn`), start a development server:
