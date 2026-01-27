@@ -10,7 +10,7 @@
 		{ role: 'Internal Treasurer', name: 'Helen Brown' },
 		{ role: 'Recruitment/Publicity', name: 'Bella Guereca' },
 		{ role: 'External Relations', name: 'Ramsey Wondersek' },
-		{ role: 'Webmaster', name: 'Jung-Min Hong' }
+		{ role: 'Webmaster', name: 'Owen Stuckman' }
 	];
 </script>
 

@@ -27,26 +27,34 @@ npm run format       # Auto-format with Prettier
 
 ### Components (`src/lib/components/`)
 
-- **Header.svelte**: Sticky nav with responsive hamburger menu, uses `$page.url` for active state
+- **Header.svelte**: Sticky nav with responsive hamburger menu, uses `$page.url` for active state. Nav switches from hamburger to full menu at 900px.
 - **Footer.svelte**: Multi-column footer with social links
-- **Hero.svelte**: Reusable hero section accepting `title`, `subtitle`, `image`, `dark` props
-- **TeamCard.svelte**: Card for displaying design team info
+- **Hero.svelte**: Reusable hero section accepting `title`, `subtitle`, `image`, `dark` props; supports slot content for CTA buttons
+- **TeamCard.svelte**: Card for displaying design team info with props: `name`, `competition`, `description`, `members`, `duration`, `travel`, `link`, `linkText`
 
 ### Styling
 
 - Tailwind CSS 4 with `@tailwindcss/forms` and `@tailwindcss/typography` plugins
 - Global CSS variables in `src/lib/styles/global.css` for brand colors and design tokens
-- Brand colors: Archimedes yellow (#ffb800, #ffd000), steel, halogen-haze
-- Responsive breakpoints at 768px and 900px
+- Brand colors: `--archimedes-yellow` (#ffb800), `--archimedes-yellow-bright` (#ffd000), `--steel` (#192b2e), `--halogen-haze` (#fffcf2)
+- Utility classes in global.css: `.section`, `.section--light`, `.section--dark`, `.container`, `.card`, `.btn`, `.btn--primary`, `.btn--outline`, `.overline`
+- Responsive breakpoints: 768px (mobile layout), 900px (desktop nav)
+- Scoped styles in components use BEM-like naming (e.g. `.nav__inner`, `.faq-item`)
 
 ### External Integrations
 
-- **EmailJS**: Contact and sponsor forms submit to EmailJS API (credentials in client code)
-- **Google Forms**: Apply page redirects to external form
+- **EmailJS**: Contact and sponsor forms submit via fetch POST to EmailJS API (credentials in client code)
+- **Google Forms**: Apply page redirects to external Google Form
 - No backend/database - all content is static
 
 ### Key Patterns
 
-- SSR-safe code: Use `if (browser)` guards for browser-only logic (see Header.svelte)
+- SSR-safe code: Use `if (browser)` guards from `$app/environment` for browser-only logic
 - Page data: Content arrays (officers, teams, FAQs) are hardcoded in page components
 - mdsvex configured for Markdown-in-Svelte (`.svx` files)
+- Forms use `preventDefault`, build `FormData`, and use `alert()` for user feedback
+
+## Code Style
+
+- Tabs for indentation, single quotes, no trailing commas, 100 char print width (see `.prettierrc`)
+- Prettier plugins: `prettier-plugin-svelte`, `prettier-plugin-tailwindcss`
