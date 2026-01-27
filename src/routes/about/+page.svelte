@@ -2,15 +2,15 @@
 	import Hero from '$lib/components/Hero.svelte';
 
 	const officers = [
-		{ role: 'President', name: 'Nidhi Gangadharan' },
-		{ role: 'VP', name: 'Indu Sanil' },
-		{ role: 'Secretary', name: 'Sophie Atkisson' },
-		{ role: 'External Treasurer', name: 'Xander Fry' },
-		{ role: 'External Treasurer', name: 'Kevin Xu' },
-		{ role: 'Internal Treasurer', name: 'Helen Brown' },
-		{ role: 'Recruitment/Publicity', name: 'Bella Guereca' },
-		{ role: 'External Relations', name: 'Ramsey Wondersek' },
-		{ role: 'Webmaster', name: 'Owen Stuckman' }
+		{ role: 'President', name: 'Nidhi Gangadharan', image: '' },
+		{ role: 'VP', name: 'Indu Sanil', image: '' },
+		{ role: 'Secretary', name: 'Sophie Atkisson', image: '' },
+		{ role: 'External Treasurer', name: 'Xander Fry', image: '' },
+		{ role: 'External Treasurer', name: 'Kevin Xu', image: '' },
+		{ role: 'Internal Treasurer', name: 'Helen Brown', image: '' },
+		{ role: 'Recruitment/Publicity', name: 'Bella Guereca', image: '' },
+		{ role: 'External Relations', name: 'Ramsey Wondersek', image: '' },
+		{ role: 'Webmaster', name: 'Owen Stuckman', image: '' }
 	];
 </script>
 
@@ -57,8 +57,22 @@
 				<div class="officers-grid">
 					{#each officers as officer}
 						<div class="officer-card">
-							<h4>{officer.role}</h4>
-							<p>{officer.name}</p>
+							<div class="officer-avatar">
+								{#if officer.image}
+									<img src={officer.image} alt={officer.name} />
+								{:else}
+									<span class="officer-initials">
+										{officer.name
+											.split(' ')
+											.map((n) => n[0])
+											.join('')}
+									</span>
+								{/if}
+							</div>
+							<div class="officer-info">
+								<p class="officer-name">{officer.name}</p>
+								<p class="officer-role">{officer.role}</p>
+							</div>
 						</div>
 					{/each}
 				</div>
@@ -83,7 +97,7 @@
 		text-align: center;
 	}
 
-	.about-section p {
+	.about-section > p {
 		font-size: 1.1rem;
 		line-height: 1.8;
 		text-align: center;
@@ -91,37 +105,101 @@
 
 	.officers-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 2rem;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+		gap: 1.5rem;
 		margin-top: 2rem;
 	}
 
 	.officer-card {
-		background: rgba(255, 255, 255, 0.05);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		padding: 1.5rem;
-		border-radius: var(--radius-md);
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: var(--radius-lg);
+		padding: 2rem 1.5rem;
 		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
 		transition:
 			transform var(--tr),
-			border-color var(--tr);
+			border-color var(--tr),
+			background var(--tr);
 	}
 
 	.officer-card:hover {
-		transform: translateY(-3px);
-		border-color: rgba(255, 184, 0, 0.3);
+		transform: translateY(-4px);
+		border-color: rgba(255, 184, 0, 0.35);
+		background: rgba(255, 255, 255, 0.07);
 	}
 
-	.officer-card h4 {
-		color: var(--archimedes-yellow);
-		margin-bottom: 0.5rem;
-		font-size: 0.9rem;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+	.officer-avatar {
+		width: 88px;
+		height: 88px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, var(--archimedes-yellow), var(--incandescent-gold));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		flex-shrink: 0;
 	}
 
-	.officer-card p {
-		font-weight: 600;
+	.officer-avatar img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.officer-initials {
+		font-size: 1.4rem;
+		font-weight: 800;
+		color: var(--steel);
+		letter-spacing: 0.5px;
+	}
+
+	.officer-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.officer-name {
+		font-weight: 700;
+		font-size: 1.1rem;
 		color: var(--text-on-dark);
+		margin: 0;
+	}
+
+	.officer-role {
+		font-size: 0.8rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1.2px;
+		color: var(--archimedes-yellow);
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.officers-grid {
+			grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+			gap: 1rem;
+		}
+
+		.officer-card {
+			padding: 1.5rem 1rem;
+		}
+
+		.officer-avatar {
+			width: 72px;
+			height: 72px;
+		}
+
+		.officer-initials {
+			font-size: 1.15rem;
+		}
+
+		.officer-name {
+			font-size: 1rem;
+		}
 	}
 </style>
