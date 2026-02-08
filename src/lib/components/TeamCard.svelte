@@ -7,9 +7,13 @@
 	export let travel = '';
 	export let link = '';
 	export let linkText = '';
+	export let image = '';
 </script>
 
 <div class="team-card">
+	{#if image}
+		<img src={image} alt={name} class="team-card__image" />
+	{/if}
 	<h3>{name}</h3>
 	<h4>{competition}</h4>
 	<p class="description">{description}</p>
@@ -37,6 +41,14 @@
 </div>
 
 <style>
+	.team-card__image {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		border-radius: var(--radius-sm);
+		margin-bottom: 1.25rem;
+	}
+
 	.team-card {
 		background: var(--white);
 		border-radius: var(--radius-md);
