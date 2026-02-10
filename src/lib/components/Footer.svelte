@@ -26,7 +26,7 @@
 				<h4>Follow Us</h4>
 				<div class="social">
 					<a
-						href="https://www.instagram.com/archimedesvt/"
+						href="https://www.instagram.com/archimedes.vt/"
 						aria-label="Instagram"
 						target="_blank"
 						rel="noopener noreferrer">Instagram</a
@@ -36,12 +36,6 @@
 						aria-label="LinkedIn"
 						target="_blank"
 						rel="noopener noreferrer">LinkedIn</a
-					>
-					<a
-						href="https://discord.gg/archimedesvt"
-						aria-label="Discord"
-						target="_blank"
-						rel="noopener noreferrer">Discord</a
 					>
 				</div>
 			</div>
