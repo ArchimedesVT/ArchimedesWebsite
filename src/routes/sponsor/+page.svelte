@@ -41,7 +41,7 @@
 <Hero
 	title="Sponsor Archimedes"
 	subtitle="Our Sponsor Package"
-	image="https://images.squarespace-cdn.com/content/v1/65da7e107ab81564f3ca3dd0/3db3abb6-16b9-4f72-b4ad-3b993b702f1b/52144490206_2b1084dfd4_o+%281%29.jpg"
+	image="/images/hero-sponsor.jpg"
 />
 
 <section class="section">

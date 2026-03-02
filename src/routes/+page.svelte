@@ -13,7 +13,7 @@
 <Hero
 	title="Jump-start your STEM career early."
 	subtitle="Get the best hands-on engineering experience right from the start, here at Virginia Tech. Open to freshmen only."
-	image="https://images.squarespace-cdn.com/content/v1/65da7e107ab81564f3ca3dd0/10dee911-c63a-4369-8492-cabad175072e/52974284471_273d239257_k.jpg"
+	image="/images/hero-home.jpg"
 >
 	<a href="/apply" class="btn btn--primary">Apply Now</a>
 </Hero>
@@ -51,7 +51,7 @@
 
 		<div class="image-section">
 			<img
-				src="https://images.squarespace-cdn.com/content/v1/65da7e107ab81564f3ca3dd0/64078f72-0a07-4c9e-ab6a-3baa84a40adf/52143452927_5fe171d25e_o.jpg"
+				src="/images/home-team.jpg"
 				alt="Archimedes team working"
 				class="hero-image"
 			/>

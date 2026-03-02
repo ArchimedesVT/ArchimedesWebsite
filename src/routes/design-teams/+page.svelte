@@ -61,7 +61,7 @@
 <Hero
 	title="Design Teams"
 	subtitle="Make a change in the world"
-	image="https://images.squarespace-cdn.com/content/v1/65da7e107ab81564f3ca3dd0/a41bed96-079c-46db-b14f-f59c9991f045/52143453042_59e0b0f195_o+%281%29.jpg"
+	image="/images/hero-design-teams.jpg"
 />
 
 <section class="section">

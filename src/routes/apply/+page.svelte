@@ -17,7 +17,7 @@
 <Hero
 	title="Apply to Archimedes"
 	subtitle="We're glad you're interested."
-	image="https://images.squarespace-cdn.com/content/v1/65da7e107ab81564f3ca3dd0/9a13e988-1f0b-4d96-ba20-9cd41eab89f5/infinitum+pic.png"
+	image="/images/hero-apply.png"
 />
 
 <section class="section">

@@ -25,7 +25,7 @@
 <Hero
 	title="About Archimedes"
 	subtitle="Who we are"
-	image="https://images.squarespace-cdn.com/content/v1/65da7e107ab81564f3ca3dd0/26fd641b-1349-42ab-bae1-890617ad9f37/VT.png"
+	image="/images/hero-about.png"
 />
 
 <section class="section">
