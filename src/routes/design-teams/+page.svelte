@@ -29,7 +29,7 @@
 		{
 			id: 'juvo',
 			name: 'Juvo',
-			color: '#34d399',
+			color: '#c3274a',
 			competition: 'RESNA Student Design Competition',
 			description:
 				'Founded in 2018, Juvo uses engineering to help the community. Freshmen are tasked with designing a solution for someone in the disabled community. In the past, Juvo has created solutions for accessibility in production, wheelchair disabilities, motor impairments, and more!',
@@ -91,7 +91,7 @@
 		{
 			id: 'astra',
 			name: 'Astra',
-			color: '#60a5fa',
+			color: '#ff6a2f',
 			competition: 'NASA Micro-g NExT',
 			description:
 				'Founded in 2015, Astra challenges students to design, build, and test a device related to space exploration. Astra has built devices such as a spacesuit cooling system, a lunar anchoring device, an autonomous rescue boat, and more!',
@@ -158,7 +158,7 @@
 		{
 			id: 'infinitum',
 			name: 'Infinitum',
-			color: '#a78bfa',
+			color: '#5a5afa',
 			competition: 'Microsoft Imagine Cup',
 			description:
 				'Founded in 2020, Infinitum offers an exciting opportunity to develop and build hardware and software addressing real-world problems. Infinitum has tackled problems such as food recognition in fridges, restaurant food waste management, and more!',
@@ -220,7 +220,7 @@
 		{
 			id: 'terra',
 			name: 'Terra',
-			color: '#fb923c',
+			color: '#009958',
 			competition: 'ASME Student Design Competition',
 			description:
 				"Founded in 2024, Terra provides students with the opportunity to design, build, drive, and compete a robot based on the season's game manual and rules. Terra is Archimedes' newest team, and strives to create a welcoming introduction to collegiate robotics!",
@@ -296,118 +296,10 @@
 	/** @type {gsap.core.Timeline | null} */
 	let currentTl = null;
 
-	// Push SVG positioning (set in toggleTeam, read in markup)
-	let pushOriginX = 0;
-	let pushOriginY = 0;
-
-	/**
-	 * Position the push SVG at the OLD (pre-expansion) bottom of the card.
-	 * Returns the initial position and how far the SVG must travel.
-	 * @param {DOMRect} oldRect   pre-reflow rect of expanding card
-	 * @param {DOMRect} newRect   post-reflow rect of expanding card
-	 * @param {DOMRect} layerRect rect of the push layer
-	 */
-	function calcPushOrigin(oldRect, newRect, layerRect) {
-		const centerX = newRect.left + newRect.width / 2 - layerRect.left;
-		const oldBottom = oldRect.bottom - layerRect.top;
-		const newBottom = newRect.bottom - layerRect.top;
-		return { x: centerX - 60, y: oldBottom, pushDistance: newBottom - oldBottom };
-	}
-
-	/**
-	 * Run GSAP timeline for a specific team's pusher (vertical, top→bottom).
-	 * The SVG is clipped to the gap that opens between the expanding card
-	 * and the cards below, so it can never overlap any card.
-	 * @param {string} teamId
-	 * @param {number} pushDistance  how many px the gap grows (card expansion)
-	 */
-	function animatePusher(teamId, pushDistance) {
-		if (!pushLayerEl) return;
-		const svg = pushLayerEl.querySelector('.push-svg');
-		if (!svg) return;
-
-		if (currentTl) currentTl.kill();
-		const tl = gsap.timeline({ onComplete: () => { pushingId = null; } });
-		currentTl = tl;
-
-		const dur = 0.8;
-		const ease = 'power2.out';
-
-		// Clip the SVG to the gap. Starts fully clipped (0 visible),
-		// reveals at the same rate the gap opens (same dur + ease as FLIP).
-		const endClip = Math.max(0, 200 - pushDistance);
-		gsap.set(svg, { clipPath: 'inset(0 0 200px 0)' });
-		tl.to(svg, { clipPath: `inset(0 0 ${endClip}px 0)`, duration: dur, ease }, 0);
-
-		if (teamId === 'juvo') {
-			const segs = svg.querySelectorAll('.j-seg');
-			const palm = svg.querySelector('.j-palm');
-			const fingers = svg.querySelectorAll('.j-finger');
-			gsap.set(segs, { scaleY: 0, transformOrigin: '50% 0%', opacity: 0 });
-			gsap.set(palm, { scale: 0, opacity: 0 });
-			gsap.set(fingers, { scaleY: 0, transformOrigin: '50% 0%', opacity: 0 });
-			segs.forEach((s, i) => {
-				tl.to(s, { scaleY: 1, opacity: 1, duration: 0.14, ease: 'power2.out' }, i * 0.08);
-			});
-			tl.to(palm, { scale: 1, opacity: 1, duration: 0.12, ease: 'back.out(1.4)' }, 0.35);
-			fingers.forEach((f, i) => {
-				tl.to(f, { scaleY: 1, opacity: 1, duration: 0.1, ease: 'power2.out' }, 0.4 + i * 0.03);
-			});
-
-		} else if (teamId === 'astra') {
-			const housing = svg.querySelector('.a-housing');
-			const cone = svg.querySelector('.a-cone');
-			const plumes = svg.querySelectorAll('.a-plume');
-			const heats = svg.querySelectorAll('.a-heat');
-			gsap.set(housing, { scaleY: 0, transformOrigin: '50% 0%', opacity: 0 });
-			gsap.set(cone, { scaleY: 0, transformOrigin: '50% 0%', opacity: 0 });
-			gsap.set(plumes, { scale: 0, opacity: 0 });
-			gsap.set(heats, { scale: 0, opacity: 0 });
-			tl.to(housing, { scaleY: 1, opacity: 1, duration: 0.2, ease: 'power2.out' }, 0);
-			tl.to(cone, { scaleY: 1, opacity: 1, duration: 0.18, ease: 'power2.out' }, 0.18);
-			plumes.forEach((p, i) => {
-				tl.to(p, { scale: 1, opacity: 0.5 - i * 0.1, duration: 0.2, ease: 'power1.out' }, 0.3 + i * 0.07);
-			});
-			heats.forEach((h, i) => {
-				tl.to(h, { scale: 1, opacity: 0.5, duration: 0.12 }, 0.45 + i * 0.05);
-				tl.to(h, { y: 15 + i * 6, opacity: 0, duration: 0.3 }, 0.55 + i * 0.05);
-			});
-
-		} else if (teamId === 'infinitum') {
-			const source = svg.querySelector('.i-source');
-			const path = svg.querySelector('.i-path');
-			const rings = svg.querySelectorAll('.i-ring');
-			const dnodes = svg.querySelectorAll('.i-dnode');
-			gsap.set(source, { scale: 0, opacity: 0 });
-			gsap.set(path, { scaleY: 0, transformOrigin: '50% 0%', opacity: 0 });
-			gsap.set(rings, { scale: 0, opacity: 0 });
-			gsap.set(dnodes, { scale: 0, opacity: 0 });
-			tl.to(source, { scale: 1, opacity: 1, duration: 0.15, ease: 'back.out(1.6)' }, 0);
-			tl.to(path, { scaleY: 1, opacity: 0.6, duration: 0.25, ease: 'power2.out' }, 0.1);
-			rings.forEach((r, i) => {
-				tl.to(r, { scale: 1, opacity: 0.6 - i * 0.15, duration: 0.25, ease: 'power1.out' }, 0.2 + i * 0.08);
-			});
-			dnodes.forEach((n, i) => {
-				tl.to(n, { scale: 1, opacity: 0.8, duration: 0.12 }, 0.35 + i * 0.06);
-			});
-
-		} else {
-			const gear = svg.querySelector('.t-gear');
-			const cylinder = svg.querySelector('.t-cylinder');
-			const rod = svg.querySelector('.t-rod');
-			const plate = svg.querySelector('.t-plate');
-			gsap.set(cylinder, { scaleY: 0, transformOrigin: '50% 0%' });
-			gsap.set(rod, { scaleY: 0, transformOrigin: '50% 0%' });
-			gsap.set(plate, { scaleY: 0, transformOrigin: '50% 0%', opacity: 0 });
-			if (gear) tl.to(gear, { rotation: 360, duration: dur, ease: 'power1.inOut', transformOrigin: '60px 38px' }, 0);
-			tl.to(cylinder, { scaleY: 1, duration: 0.25, ease: 'power2.out' }, 0.05);
-			tl.to(rod, { scaleY: 1, duration: 0.25, ease: 'power2.out' }, 0.25);
-			tl.to(plate, { scaleY: 1, opacity: 1, duration: 0.12, ease: 'power3.out' }, 0.45);
-		}
-
-		// Fade out after the gap is fully open
-		tl.to(svg, { opacity: 0, duration: 0.4, ease: 'power1.in' }, dur);
-	}
+	// Glow positioning (set in toggleTeam, read in markup)
+	let glowX = 0;
+	let glowY = 0;
+	let glowHeight = 0;
 
 	/** @param {string} id */
 	async function toggleTeam(id) {
@@ -450,31 +342,31 @@
 		}
 
 		if (isExpanding && flips.length > 0) {
-			// Only show push animation when cards below actually move
+			// Show gradient glow in the gap
 			pushingId = id;
-			await tick(); // mount the push layer + SVG
 
-			if (pushLayerEl) {
-				const layerRect = pushLayerEl.getBoundingClientRect();
-				const expandOldRect = rects[id];
-				const expandNewRect = cardEls[id].getBoundingClientRect();
-				const origin = calcPushOrigin(expandOldRect, expandNewRect, layerRect);
-				pushOriginX = origin.x;
-				pushOriginY = origin.y;
-
-				await tick(); // apply position before animating
-				animatePusher(id, origin.pushDistance);
+			const expandOldRect = rects[id];
+			const expandNewRect = cardEls[id].getBoundingClientRect();
+			const gridRect = cardEls[id].parentElement?.getBoundingClientRect();
+			if (gridRect) {
+				glowX = expandNewRect.left + expandNewRect.width / 2 - gridRect.left;
+				glowY = expandOldRect.bottom - gridRect.top;
+				glowHeight = expandNewRect.bottom - expandOldRect.bottom;
 			}
 
-			// FLIP in sync — same duration & easing as the SVG clip reveal
+			// Animate FLIP on a shared timeline
+			if (currentTl) currentTl.kill();
+			const tl = gsap.timeline({ onComplete: () => { pushingId = null; } });
+			currentTl = tl;
 			for (const flip of flips) {
-				gsap.fromTo(flip.el,
+				tl.fromTo(flip.el,
 					{ x: flip.dx, y: flip.dy },
-					{ x: 0, y: 0, duration: 0.8, ease: 'power2.out' }
+					{ x: 0, y: 0, duration: 0.8, ease: 'power2.out' },
+					0
 				);
 			}
 		} else {
-			// Collapse: just FLIP, no pusher
+			// Collapse: just FLIP, no glow
 			pushingId = null;
 			for (const flip of flips) {
 				flip.el.animate(
@@ -766,72 +658,10 @@
 					bind:this={pushLayerEl}
 					style="--tc: {pushTeam?.color}"
 				>
-					<svg
-						class="push-svg"
-						style="left:{pushOriginX}px;top:{pushOriginY}px"
-						viewBox="0 0 120 200"
-						fill="none"
-					>
-						{#if pushingId === 'juvo'}
-							<!-- Prosthetic arm vertical: shoulder → upper arm → elbow → forearm → wrist → palm → fingers -->
-							<circle class="j-seg" cx="60" cy="10" r="8" stroke="var(--tc)" stroke-width="2.5"/>
-							<rect class="j-seg" x="52" y="20" width="16" height="38" rx="5" stroke="var(--tc)" stroke-width="2"/>
-							<circle class="j-seg" cx="60" cy="64" r="6" stroke="var(--tc)" stroke-width="2"/>
-							<rect class="j-seg" x="53" y="72" width="14" height="36" rx="5" stroke="var(--tc)" stroke-width="2"/>
-							<circle class="j-seg" cx="60" cy="114" r="5" stroke="var(--tc)" stroke-width="2"/>
-							<rect class="j-palm" x="49" y="121" width="22" height="22" rx="5" stroke="var(--tc)" stroke-width="2"/>
-							<rect class="j-finger" x="49" y="143" width="3" height="18" rx="1.5" fill="var(--tc)" opacity="0.8"/>
-							<rect class="j-finger" x="54" y="143" width="3" height="22" rx="1.5" fill="var(--tc)" opacity="0.8"/>
-							<rect class="j-finger" x="59" y="143" width="3" height="24" rx="1.5" fill="var(--tc)" opacity="0.8"/>
-							<rect class="j-finger" x="64" y="143" width="3" height="22" rx="1.5" fill="var(--tc)" opacity="0.8"/>
-							<rect class="j-finger" x="69" y="143" width="3" height="18" rx="1.5" fill="var(--tc)" opacity="0.8"/>
-						{:else if pushingId === 'astra'}
-							<!-- Jet engine: housing → detail lines → exhaust cone → plume ellipses → heat circles -->
-							<g class="a-housing">
-								<rect x="30" y="8" width="60" height="40" rx="8" stroke="var(--tc)" stroke-width="2"/>
-								<line x1="42" y1="16" x2="42" y2="40" stroke="var(--tc)" stroke-width="1.5" opacity="0.4"/>
-								<line x1="60" y1="12" x2="60" y2="44" stroke="var(--tc)" stroke-width="1.5" opacity="0.3"/>
-								<line x1="78" y1="16" x2="78" y2="40" stroke="var(--tc)" stroke-width="1.5" opacity="0.4"/>
-							</g>
-							<polygon class="a-cone" points="35,48 85,48 95,80 25,80" stroke="var(--tc)" stroke-width="2" fill="none"/>
-							<ellipse class="a-plume" cx="60" cy="95" rx="30" ry="12" fill="var(--tc)" opacity="0.3"/>
-							<ellipse class="a-plume" cx="60" cy="115" rx="38" ry="14" fill="var(--tc)" opacity="0.2"/>
-							<ellipse class="a-plume" cx="60" cy="138" rx="45" ry="16" fill="var(--tc)" opacity="0.12"/>
-							<circle class="a-heat" cx="45" cy="105" r="3" fill="var(--tc)"/>
-							<circle class="a-heat" cx="75" cy="110" r="2.5" fill="var(--tc)"/>
-							<circle class="a-heat" cx="50" cy="130" r="2" fill="var(--tc)"/>
-							<circle class="a-heat" cx="70" cy="145" r="1.5" fill="var(--tc)"/>
-						{:else if pushingId === 'infinitum'}
-							<!-- Neural pulse: source node → dashed signal path → concentric rings → data nodes -->
-							<circle class="i-source" cx="60" cy="12" r="8" fill="var(--tc)" opacity="0.9"/>
-							<circle class="i-source" cx="60" cy="12" r="4" fill="var(--tc)"/>
-							<line class="i-path" x1="60" y1="20" x2="60" y2="160" stroke="var(--tc)" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
-							<ellipse class="i-ring" cx="60" cy="80" rx="25" ry="25" stroke="var(--tc)" stroke-width="2" fill="none" opacity="0.5"/>
-							<ellipse class="i-ring" cx="60" cy="80" rx="40" ry="40" stroke="var(--tc)" stroke-width="1.5" fill="none" opacity="0.35"/>
-							<ellipse class="i-ring" cx="60" cy="80" rx="55" ry="55" stroke="var(--tc)" stroke-width="1" fill="none" opacity="0.2"/>
-							<circle class="i-dnode" cx="20" cy="60" r="4" fill="var(--tc)"/>
-							<circle class="i-dnode" cx="100" cy="60" r="4" fill="var(--tc)"/>
-							<circle class="i-dnode" cx="20" cy="100" r="3.5" fill="var(--tc)"/>
-							<circle class="i-dnode" cx="100" cy="100" r="3.5" fill="var(--tc)"/>
-						{:else}
-							<!-- Terra: gear group → cylinder → rod → push plate (vertical) -->
-							<g class="t-gear">
-								<circle cx="60" cy="38" r="18" stroke="var(--tc)" stroke-width="2"/>
-								<circle cx="60" cy="38" r="7" fill="var(--tc)" opacity="0.5"/>
-								<line x1="60" y1="16" x2="60" y2="22" stroke="var(--tc)" stroke-width="3" stroke-linecap="round"/>
-								<line x1="60" y1="54" x2="60" y2="60" stroke="var(--tc)" stroke-width="3" stroke-linecap="round"/>
-								<line x1="38" y1="38" x2="44" y2="38" stroke="var(--tc)" stroke-width="3" stroke-linecap="round"/>
-								<line x1="76" y1="38" x2="82" y2="38" stroke="var(--tc)" stroke-width="3" stroke-linecap="round"/>
-								<line x1="47.3" y1="25.3" x2="51.5" y2="29.5" stroke="var(--tc)" stroke-width="2.5" stroke-linecap="round"/>
-								<line x1="68.5" y1="46.5" x2="72.7" y2="50.7" stroke="var(--tc)" stroke-width="2.5" stroke-linecap="round"/>
-								<line x1="72.7" y1="25.3" x2="68.5" y2="29.5" stroke="var(--tc)" stroke-width="2.5" stroke-linecap="round"/>
-								<line x1="51.5" y1="46.5" x2="47.3" y2="50.7" stroke="var(--tc)" stroke-width="2.5" stroke-linecap="round"/>
-							</g>
-							<rect class="t-cylinder" x="48" y="62" width="24" height="50" rx="4" stroke="var(--tc)" stroke-width="2"/>
-							<rect class="t-rod" x="53" y="112" width="14" height="40" rx="3" stroke="var(--tc)" stroke-width="2"/>
-							<rect class="t-plate" x="32" y="152" width="56" height="16" rx="4" stroke="var(--tc)" stroke-width="2.5" fill="var(--tc)" opacity="0.3"/>
-						{/if}
-					</svg>
+					<div
+						class="push-glow"
+						style="left:{glowX}px;top:{glowY}px;height:{glowHeight}px"
+					></div>
 				</div>
 			{/if}
 		</div>
@@ -935,6 +765,7 @@
 	/* ── Team card ── */
 	.team-card {
 		position: relative;
+		z-index: 20;
 		background: rgba(255, 255, 255, 0.03);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		border-top: 3px solid var(--tc);
@@ -950,21 +781,28 @@
 		border-color: rgba(255, 255, 255, 0.12);
 	}
 
-	/* ── Push layer (themed animations between cards) ── */
+	/* ── Push layer (gradient glow between cards) ── */
 	.push-layer {
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		z-index: 10;
-		overflow: visible;
+		z-index: 5;
+		overflow: hidden;
 	}
 
-	.push-svg {
+	.push-glow {
 		position: absolute;
-		width: 120px;
-		height: 200px;
-		transform-origin: top center;
-		overflow: visible;
+		width: 300px;
+		transform: translateX(-50%);
+		background: radial-gradient(ellipse at center, var(--tc) 0%, transparent 70%);
+		opacity: 0;
+		animation: glow-fade 1s ease-out forwards;
+	}
+
+	@keyframes glow-fade {
+		0% { opacity: 0; }
+		30% { opacity: 0.15; }
+		100% { opacity: 0; }
 	}
 
 	/* ── Card header (always visible) ── */
