@@ -41,37 +41,37 @@
 			people: [
 				{
 					name: 'Abby Sobal',
-					photo: driveImg('https://drive.google.com/file/d/1U4H5w1vuGunMndxVLIccMt-M-s62bGb4/view?usp=sharing'),
+					photo: '/members/abby-sobal.jpg',
 					bio: "I plan to major in mechanical engineering and am a member of Baja SAE, Astrobotics, and the Society of Hispanic Professional Engineers. I'm from Chilhowie, a one stoplight town in Southwest Virginia."
 				},
 				{
 					name: 'Madison Kim',
-					photo: driveImg('https://drive.google.com/file/d/1eW1Wc-1Pra2zh7-kusMr897PimFE6QrK/view?usp=sharing'),
+					photo: '/members/madison-kim.jpg',
 					bio: "Hi! My name is Madison and I am a Freshman planning to major in Mechanical Engineering. I am on Team Juvo and I work mostly on research and hardware. Outside of academics, I like playing volleyball and baking."
 				},
 				{
 					name: 'Sabina Borjes',
-					photo: driveImg('https://drive.google.com/file/d/1cdZad1fSSAqjDNhyBhNnGWWObegS52mh/view?usp=sharing'),
+					photo: '/members/sabina-borjes.jpg',
 					bio: "Hi! I'm Sabina and I am a freshman majoring in Industrial Design and minoring in Human Computer Interaction. I love all things pink, sparkly, and cute!"
 				},
 				{
 					name: 'Prehaan Parikh',
-					photo: driveImg('https://drive.google.com/file/d/1kKHkHs9NT0M4Qm6QPYXvdvagyag7oE1o/view?usp=sharing'),
+					photo: '/members/prehaan-parikh.jpg',
 					bio: "I'm an Industrial and Systems Engineering student passionate about creating meaningful impact through innovation, data-driven problem-solving, and social responsibility."
 				},
 				{
 					name: 'Will Draper',
-					photo: driveImg('https://drive.google.com/file/d/1c4jSpBcHivd43sOgcz5BBK1UbsMD3pk8/view?usp=sharing'),
+					photo: '/members/will-draper.jpg',
 					bio: "Hi! My name is Will, and I am a Mechanical Engineering student at Virginia Tech on Team Juvo. In my free time, I enjoy playing sports such as football and basketball."
 				},
 				{
 					name: 'Ansh Khatiwada',
-					photo: driveImg('https://drive.google.com/file/d/1u3GhECEhvg6amzhSjPDGJSJSFO6wNFMJ/view?usp=sharing'),
+					photo: '/members/ansh-khatiwada.jpg',
 					bio: "Hello everyone, my name is Ansh and I am a Computer Engineering major here at Virginia Tech. I am mainly responsible for the programming aspect of our project."
 				},
 				{
 					name: 'Avril Yelland',
-					photo: driveImg('https://drive.google.com/file/d/1cl_hbN39cS1KSD78RJ5icCijWyCpxbTq/view?usp=sharing'),
+					photo: '/members/avril-yelland.jpg',
 					bio: "Hi I'm Avril and I am a freshman mechanical engineering major. I'm passionate about accessibility and how engineering can give that to people."
 				}
 			],
@@ -103,37 +103,37 @@
 			people: [
 				{
 					name: 'Natalie Chapman',
-					photo: driveImg('https://drive.google.com/file/d/1MzApLmVFb8T4RVbQVLRYi22PqF6fNjb-/view?usp=sharing'),
+					photo: '/members/natalie-chapman.png',
 					bio: "I'm a freshman studying aerospace engineering from Pittsburgh, Pennsylvania. In addition to school I love to read and play music."
 				},
 				{
 					name: 'Alena Arnold',
-					photo: driveImg('https://drive.google.com/file/d/1S6mCgyvOZ3cvbMiN12yYuGKjorUGXV8S/view?usp=sharing'),
+					photo: '/members/alena-arnold.png',
 					bio: "Hi! I'm Alena! I'm a chemical engineering major on team Astra. I enjoy playing tennis!"
 				},
 				{
 					name: 'Vamsi Sri Sai Guttikonda',
-					photo: driveImg('https://drive.google.com/file/d/1-5puDfSMnq1ic_Et6hivB4UbFsiD60q4/view?usp=sharing'),
+					photo: '/members/vamsi-guttikonda.png',
 					bio: "Hello I'm Vamsi, I'm majoring in mechanical engineering and I'm a member of team Astra. I love to cook, lift, and listen to music in my free time."
 				},
 				{
 					name: 'Aarya Gupta',
-					photo: driveImg('https://drive.google.com/file/d/1XkGfZnK-u8_jszYy_j1SvQ5noeF76k2O/view?usp=sharing'),
+					photo: '/members/aarya-gupta.png',
 					bio: "Aarya is a Computer Engineering major who loves all things space. She can usually be spotted at Chipotle."
 				},
 				{
 					name: 'Spencer Matijak',
-					photo: driveImg('https://drive.google.com/file/d/18oJuONr3s5Bg-RH3KCpDRgSnAf8NR-EQ/view?usp=sharing'),
+					photo: '/members/spencer-matijak.png',
 					bio: "Hello everyone, my name is Spencer and I am a first year electrical engineering student who hopes to one day work in microelectronics design."
 				},
 				{
 					name: 'Logan Pepin',
-					photo: driveImg('https://drive.google.com/file/d/1IMrl5k7D53WBZMpY15F_GR-VfdDFzl2Q/view?usp=sharing'),
+					photo: '/members/logan-pepin.png',
 					bio: "Hello, my name is Logan and I am on team ASTRA. I am a freshman here at Tech studying Mechanical engineering and applied music."
 				},
 				{
 					name: 'Adam Younis',
-					photo: driveImg('https://drive.google.com/file/d/1lb0w0cMFACDd4vEIX0jIQCAfMSgdGZPu/view?usp=sharing'),
+					photo: '/members/adam-younis.png',
 					bio: "My name is Adam Younis, I like climbing, cooking and problem solving and I'm part of Archimedes' team Astra."
 				}
 			],
@@ -232,42 +232,42 @@
 			people: [
 				{
 					name: 'Andrew Friedman',
-					photo: driveImg('https://drive.google.com/file/d/1PzcbMCPo1uutVtXtGTwzrIb8zHnShILD/view?usp=sharing'),
+					photo: '/members/andrew-friedman.jpg',
 					bio: "I have a passion for all things engineering and especially robotics. I like to spend my spare time playing video games or guitar."
 				},
 				{
 					name: 'Dhruv Hassani',
-					photo: driveImg('https://drive.google.com/file/d/1HNpk-IQV2riiJds41ciPd2S1PDNpqJPx/view?usp=sharing'),
+					photo: '/members/dhruv-hassani.jpg',
 					bio: "I'm a freshman studying Electrical and Computer Engineering at Virginia Tech, originally from Phoenix, Arizona."
 				},
 				{
 					name: 'Colin Gwon',
-					photo: driveImg('https://drive.google.com/file/d/1hw25ldLIeLBgnlMB1VC7cBHLJVG2Dv0k/view?usp=sharing'),
+					photo: '/members/colin-gwon.jpg',
 					bio: "I'm a freshman at Virginia Tech majoring in ECE. I can be entertained with a good math problem and I am a big Pokémon fan."
 				},
 				{
 					name: 'Kaeli Berry',
-					photo: driveImg('https://drive.google.com/file/d/1eI3zd_StnLSvwJgU9WJL9g43GOCQUxCC/view?usp=sharing'),
+					photo: '/members/kaeli-berry.jpg',
 					bio: "Hi! I'm Kaeli Berry, majoring in Mechanical Engineering and minoring in Industrial Design and Applied Voice. I love music and visual art."
 				},
 				{
 					name: 'Parker Colasurdo',
-					photo: driveImg('https://drive.google.com/file/d/1bgt9DgFYC3S3hWjpTn8g3cJGR3ivpjby/view?usp=sharing'),
+					photo: '/members/parker-colasurdo.jpg',
 					bio: "I am a freshman majoring in Mechanical Engineering. My two favorite hobbies are video games and running."
 				},
 				{
 					name: 'Kayla Scott',
-					photo: driveImg('https://drive.google.com/file/d/1TMoCclDcVJGABtP6jaPu472rZNLaEv2h/view?usp=sharing'),
+					photo: '/members/kayla-scott.jpg',
 					bio: "I'm a freshman mechanical engineering major with an interest in automotive engineering. I love baking, cubing, and F1!"
 				},
 				{
 					name: 'Anna Suh',
-					photo: driveImg('https://drive.google.com/file/d/1a9Lboy6976cgucz6BaUOhUVEN9TL296k/view?usp=sharing'),
+					photo: '/members/anna-suh.jpg',
 					bio: "Hello! I am a freshman majoring in Computer Engineering and I am interested in Chip-Scale Integration. I like to hike, play games, and do art."
 				},
 				{
 					name: 'Kai Bald',
-					photo: driveImg('https://drive.google.com/file/d/1jwat-6yTxCTPwQajBR4V2kjmu1n6yyAr/view?usp=sharing'),
+					photo: '/members/kai-bald.jpg',
 					bio: "I am a freshman electrical engineering major on Terra. I am interested in studying robotics and control systems."
 				}
 			],
