@@ -104,6 +104,7 @@
 				{
 					name: 'Natalie Chapman',
 					photo: '/members/natalie-chapman.png',
+					photoPos: 'center 40%',
 					bio: "I'm a freshman studying aerospace engineering from Pittsburgh, Pennsylvania. In addition to school I love to read and play music."
 				},
 				{
@@ -114,6 +115,7 @@
 				{
 					name: 'Vamsi Sri Sai Guttikonda',
 					photo: '/members/vamsi-guttikonda.png',
+					photoPos: 'center 20%',
 					bio: "Hello I'm Vamsi, I'm majoring in mechanical engineering and I'm a member of team Astra. I love to cook, lift, and listen to music in my free time."
 				},
 				{
@@ -124,11 +126,13 @@
 				{
 					name: 'Spencer Matijak',
 					photo: '/members/spencer-matijak.png',
+					photoPos: 'center 40%',
 					bio: "Hello everyone, my name is Spencer and I am a first year electrical engineering student who hopes to one day work in microelectronics design."
 				},
 				{
 					name: 'Logan Pepin',
 					photo: '/members/logan-pepin.png',
+					photoPos: 'center 40%',
 					bio: "Hello, my name is Logan and I am on team ASTRA. I am a freshman here at Tech studying Mechanical engineering and applied music."
 				},
 				{
@@ -305,8 +309,15 @@
 	async function toggleTeam(id) {
 		const isExpanding = expandedTeam !== id;
 
-		// Kill any running push animation
-		if (currentTl) { currentTl.kill(); pushingId = null; await tick(); }
+		// Kill any running push animation and clear leftover transforms
+		if (currentTl) {
+			currentTl.kill();
+			for (const t of teams) {
+				if (cardEls[t.id]) gsap.set(cardEls[t.id], { clearProps: 'transform' });
+			}
+			pushingId = null;
+			await tick();
+		}
 
 		// ── FLIP: capture old positions ──
 		/** @type {Record<string, DOMRect>} */
@@ -341,29 +352,53 @@
 			}
 		}
 
-		if (isExpanding && flips.length > 0) {
+		if (isExpanding) {
 			// Show gradient glow in the gap
 			pushingId = id;
 
-			const expandOldRect = rects[id];
 			const expandNewRect = cardEls[id].getBoundingClientRect();
+			const header = cardEls[id]?.querySelector('.team-card__header');
+			const headerHeight = header ? header.getBoundingClientRect().height : 0;
 			const gridRect = cardEls[id].parentElement?.getBoundingClientRect();
 			if (gridRect) {
 				glowX = expandNewRect.left + expandNewRect.width / 2 - gridRect.left;
-				glowY = expandOldRect.bottom - gridRect.top;
-				glowHeight = expandNewRect.bottom - expandOldRect.bottom;
+				glowY = expandNewRect.top - gridRect.top + headerHeight;
+				glowHeight = Math.max(24, expandNewRect.height - headerHeight);
 			}
 
 			// Animate FLIP on a shared timeline
 			if (currentTl) currentTl.kill();
-			const tl = gsap.timeline({ onComplete: () => { pushingId = null; } });
+			const tl = gsap.timeline({
+				onComplete: () => {
+					pushingId = null;
+					for (const flip of flips) {
+						gsap.set(flip.el, { clearProps: 'transform' });
+					}
+				}
+			});
 			currentTl = tl;
-			for (const flip of flips) {
-				tl.fromTo(flip.el,
-					{ x: flip.dx, y: flip.dy },
-					{ x: 0, y: 0, duration: 0.8, ease: 'power2.out' },
-					0
-				);
+
+			if (flips.length > 0) {
+				for (const flip of flips) {
+					tl.fromTo(flip.el,
+						{ x: flip.dx, y: flip.dy },
+						{ x: 0, y: 0, duration: 0.8, ease: 'power2.out' },
+						0
+					);
+				}
+			} else {
+				// No cards below to FLIP (e.g. last card) — animate the body open
+				const body = cardEls[id]?.querySelector('.team-card__body');
+				if (body) {
+					const fullHeight = body.scrollHeight;
+					gsap.fromTo(body,
+						{ maxHeight: 0, opacity: 0, overflow: 'hidden' },
+						{ maxHeight: fullHeight, opacity: 1, duration: 0.8, ease: 'power2.out',
+							onComplete: () => gsap.set(body, { clearProps: 'maxHeight,opacity,overflow' }) }
+					);
+				}
+				// Keep glow alive for its animation duration
+				tl.to({}, { duration: 1 }, 0);
 			}
 		} else {
 			// Collapse: just FLIP, no glow
@@ -603,7 +638,7 @@
 											>
 												<div class="member-photo">
 													{#if member.photo}
-														<img src={member.photo} alt={member.name} />
+														<img src={member.photo} alt={member.name} style={member.photoPos ? `object-position:${member.photoPos}` : ''} />
 													{:else}
 														<span class="member-initials">{initials(member.name)}</span>
 													{/if}
