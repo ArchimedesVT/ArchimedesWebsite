@@ -174,27 +174,27 @@
 			people: [
 				{
 					name: 'James Chandler Mercer',
-					photo: '',
+					photo: '/members/james-chandler.jpg',
 					bio: "Hey, I'm Chandler Mercer, I'm on the Infinitum team and have been programming web applications since I was 15."
 				},
 				{
 					name: 'Rhea Parekh',
-					photo: '',
+					photo: '/members/rhea.png',
 					bio: "My name is Rhea Parekh and I am an ECE major at Tech! I love circuit-based hardware systems and building clean, user-friendly interfaces."
 				},
 				{
 					name: 'Nicolas Parong',
-					photo: '',
+					photo: '/members/nico.png',
 					bio: "I'm a Computer Engineering major who's very proud of his Filipino culture. Learning is truly a journey, and I'm glad to be in good company."
 				},
 				{
 					name: 'Aleysa Marie Sweeney',
-					photo: '',
+					photo: '/members/aleysa.png',
 					bio: "Freshman General Engineering major, planning to major in CS. I love doing nails and my own piercings!"
 				},
 				{
 					name: 'Nira Marri',
-					photo: '',
+					photo: '/members/nira.png',
 					bio: "Hi, I'm a freshman majoring in CS. I'm interested in programming, machine learning, and AI."
 				},
 				{
