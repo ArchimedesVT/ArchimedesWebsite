@@ -5,11 +5,9 @@
 		{ role: 'President', name: 'Nidhi Gangadharan', image: '' },
 		{ role: 'VP', name: 'Indu Sanil', image: '' },
 		{ role: 'Secretary', name: 'Sophie Atkisson', image: '' },
-		{ role: 'External Treasurer', name: 'Xander Fry', image: '' },
 		{ role: 'External Treasurer', name: 'Kevin Xu', image: '' },
 		{ role: 'Internal Treasurer', name: 'Helen Brown', image: '' },
 		{ role: 'Recruitment/Publicity', name: 'Bella Guereca', image: '' },
-		{ role: 'External Relations', name: 'Ramsey Wondersek', image: '' },
 		{ role: 'Webmaster', name: 'Owen Stuckman', image: '' }
 	];
 </script>
@@ -22,11 +20,7 @@
 	/>
 </svelte:head>
 
-<Hero
-	title="About Archimedes"
-	subtitle="Who we are"
-	image="/images/hero-about.png"
-/>
+<Hero title="About Archimedes" subtitle="Who we are" image="/images/hero-about.png" />
 
 <section class="section">
 	<div class="container">
@@ -35,9 +29,9 @@
 				<h2>Who we are</h2>
 				<p>
 					Archimedes is an umbrella organization that encompasses four design teams, each
-					participating in different national-level collegiate STEM competitions. The teams and
-					their respective competitions are managed and operated by upperclassmen leads and guided
-					by Virginia Tech professors and subject matter experts.
+					participating in different national-level collegiate STEM competitions. The teams and their
+					respective competitions are managed and operated by upperclassmen leads and guided by
+					Virginia Tech professors and subject matter experts.
 				</p>
 			</div>
 
@@ -51,9 +45,8 @@
 					funding, and mentors to excel in their design competitions.
 				</p>
 			</div>
-
 			<div class="about-section">
-				<h2>Meet the team</h2>
+				<h2>Meet the officers</h2>
 				<div class="officers-grid">
 					{#each officers as officer}
 						<div class="officer-card">
@@ -103,6 +96,7 @@
 		text-align: center;
 	}
 
+	/* Officers */
 	.officers-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -196,10 +190,6 @@
 
 		.officer-initials {
 			font-size: 1.15rem;
-		}
-
-		.officer-name {
-			font-size: 1rem;
 		}
 	}
 </style>

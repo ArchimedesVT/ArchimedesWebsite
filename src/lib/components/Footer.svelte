@@ -22,29 +22,19 @@
 				<p>Virginia Tech<br />Blacksburg, VA 24061</p>
 			</div>
 
-			<div class="footer__col">
-				<h4>Follow Us</h4>
-				<div class="social">
-					<a
-						href="https://www.instagram.com/archimedes.vt/"
-						aria-label="Instagram"
-						target="_blank"
-						rel="noopener noreferrer">Instagram</a
-					>
-					<a
-						href="https://www.linkedin.com/company/archimedesvt/"
-						aria-label="LinkedIn"
-						target="_blank"
-						rel="noopener noreferrer">LinkedIn</a
-					>
-				</div>
-			</div>
-		</div>
+      <div class="footer__col">
+        <h4>Follow Us</h4>
+        <div class="social">
+          <a href="https://www.instagram.com/archimedes.vt/?hl=en" aria-label="Instagram">Instagram</a>
+          <a href="linkedin.com/company/archimedesvt/" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
 
-		<div class="footer__bottom">
-			<p>&copy; 2026 Archimedes at Virginia Tech. All rights reserved.</p>
-		</div>
-	</div>
+    <div class="footer__bottom">
+      <p>2025 Archimedes at Virginia Tech</p>
+    </div>
+  </div>
 </footer>
 
 <style>
