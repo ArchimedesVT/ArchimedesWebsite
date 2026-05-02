@@ -41,7 +41,7 @@
 <Hero
 	title="Sponsor Archimedes"
 	subtitle="Our Sponsor Package"
-	image="/images/hero-sponsor.jpg"
+	image="/images/hero-sponsor.webp"
 />
 
 <section class="section">

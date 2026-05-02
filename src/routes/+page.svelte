@@ -13,7 +13,7 @@
 <Hero
 	title="Jump-start your STEM career early."
 	subtitle="Get the best hands-on engineering experience right from the start, here at Virginia Tech. Open to freshmen only."
-	image="/images/hero-home.jpg"
+	image="/images/hero-home.webp"
 >
 	<a href="/apply" class="btn btn--primary">Apply Now</a>
 </Hero>
@@ -51,7 +51,7 @@
 
 		<div class="image-section">
 			<img
-				src="/images/home-team.jpg"
+				src="/images/home-team.webp"
 				alt="Archimedes team working"
 				class="hero-image"
 			/>

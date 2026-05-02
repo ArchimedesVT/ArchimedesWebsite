@@ -20,7 +20,7 @@
 	/>
 </svelte:head>
 
-<Hero title="About Archimedes" subtitle="Who we are" image="/images/hero-about.png" />
+<Hero title="About Archimedes" subtitle="Who we are" image="/images/hero-about.webp" />
 
 <section class="section">
 	<div class="container">

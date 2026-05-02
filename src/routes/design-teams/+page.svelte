@@ -521,7 +521,7 @@
 <Hero
 	title="Design Teams"
 	subtitle="Make a change in the world"
-	image="/images/hero-design-teams.jpg"
+	image="/images/hero-design-teams.webp"
 />
 
 <section class="section">

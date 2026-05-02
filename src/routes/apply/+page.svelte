@@ -17,7 +17,7 @@
 <Hero
 	title="Apply to Archimedes"
 	subtitle="We're glad you're interested."
-	image="/images/hero-apply.png"
+	image="/images/hero-apply.webp"
 />
 
 <section class="section">
