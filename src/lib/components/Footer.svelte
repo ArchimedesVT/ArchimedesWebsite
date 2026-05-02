@@ -32,7 +32,7 @@
     </div>
 
     <div class="footer__bottom">
-      <p>2025 Archimedes at Virginia Tech</p>
+      <p>2026 Archimedes at Virginia Tech</p>
     </div>
   </div>
 </footer>
