@@ -77,6 +77,13 @@
 			<li><a href="/apply" class:current={$page.url.pathname === '/apply'}>Apply</a></li>
 			<li><a href="/faq" class:current={$page.url.pathname === '/faq'}>FAQ</a></li>
 			<li><a href="/sponsor" class:current={$page.url.pathname === '/sponsor'}>Sponsor</a></li>
+			<li>
+				<a
+					href="https://giving.adv.vt.edu/gift?fund=821210&amount=5&frequency=onetime&utm_source=Popup_WebApps&utm_medium=Web&utm_campaign=GivingSite&campaign=AF27581AQV1F404W"
+					target="_blank"
+					rel="noopener noreferrer">Donate</a
+				>
+			</li>
 			<li><a href="/contact" class:current={$page.url.pathname === '/contact'}>Contact</a></li>
 		</ul>
 	</nav>
