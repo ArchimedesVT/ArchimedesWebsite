@@ -67,7 +67,6 @@
 
 				<div class="sponsors-grid">
 					<!-- Placeholder for sponsor logos -->
-					<img src="/altec.webp" alt="altec" class="w-100" />
 					<img src="/mis.webp" alt="mis" class="sponsor-picture" />
 					<img src="/sec.webp" alt="sec" class="sponsor-picture" />
 				</div>
